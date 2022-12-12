@@ -9,7 +9,12 @@
 ### [API](https://spoonacular.com/food-api)
 
 ### The app has four screens:
+**initial screen**: the start screen on which there is a button ``Start cooking`` go to cooking.
 
+
+### Demonstration of the operation of screens and the operation of the application:
+
+**initial screen**: there are two buttons on the screen with a branded screensaver and music: start the game, which throws the player to the level screen and the rules button, which sends the player to the screen with the rules of the game
 
 <img width="333" alt="Снимок экрана 2022-12-12 в 10 30 54" src="https://user-images.githubusercontent.com/110721351/206976921-809be607-b6e8-4689-a680-9a1b586c3f85.png"> <img width="334" alt="Снимок экрана 2022-12-12 в 10 31 18" src="https://user-images.githubusercontent.com/110721351/206976931-8bba6ba7-4e97-4181-b468-4dea5ece76d2.png">
 
