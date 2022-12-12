@@ -3,4 +3,4 @@
 
 ### Версия iOS: 14+
 ### Стэк: UIKit,URLSession,CoreData,MVC
-### [API](https://api.spoonacular.com)
+### [API](https://spoonacular.com/food-api)
