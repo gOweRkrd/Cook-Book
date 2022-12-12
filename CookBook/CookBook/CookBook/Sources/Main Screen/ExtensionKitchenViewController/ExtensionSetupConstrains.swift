@@ -16,17 +16,18 @@ extension KitchenViewController {
         ])
 
         NSLayoutConstraint.activate([
-            headerView.topAnchor.constraint(equalTo: view.topAnchor,constant: 10),
+            headerView.topAnchor.constraint(equalTo: view.topAnchor),
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            headerView.heightAnchor.constraint(equalTo: view.heightAnchor,constant:.headerViewHeightAnchor)
+            headerView.heightAnchor.constraint(equalToConstant: .headerViewHeightAnchor)
+           
         ])
         
         NSLayoutConstraint.activate([
-            myTableView.topAnchor.constraint(equalTo: headerView.bottomAnchor,constant: 5),
+            myTableView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
             myTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant:.myTableViewTrailingAnchor),
             myTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            myTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant:.myTableViewBottomAnchor)
+            myTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
     }
@@ -36,7 +37,7 @@ extension KitchenViewController {
 
 private extension CGFloat {
     
-    static let headerViewHeightAnchor : CGFloat = -620
     static let myTableViewTrailingAnchor : CGFloat = 100
-    static let myTableViewBottomAnchor : CGFloat = -0
+    static let headerViewHeightAnchor : CGFloat = 250
+    
 }
