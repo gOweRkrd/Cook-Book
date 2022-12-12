@@ -126,7 +126,7 @@ final class DetailViewController: UIViewController {
             favouriteButton.widthAnchor.constraint(equalToConstant: 50),
             favouriteButton.heightAnchor.constraint(equalToConstant: 50),
             
-            nameLabel.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 5),
+            nameLabel.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 15),
             nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
