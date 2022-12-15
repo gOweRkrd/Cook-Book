@@ -19,17 +19,13 @@ extension KitchenViewController {
             headerView.topAnchor.constraint(equalTo: view.topAnchor),
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: .headerViewHeightAnchor)
-           
-        ])
-        
-        NSLayoutConstraint.activate([
+            headerView.heightAnchor.constraint(equalToConstant: .headerViewHeightAnchor),
+            
             myTableView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
             myTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant:.myTableViewTrailingAnchor),
             myTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             myTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-        
     }
 }
 

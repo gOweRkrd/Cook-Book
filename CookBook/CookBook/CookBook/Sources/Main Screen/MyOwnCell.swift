@@ -68,7 +68,6 @@ final class MyOwnCell: UITableViewCell  {
     private func castomizeCell () {
         contentView.backgroundColor = UIColor(red: 240/255, green: 235/255, blue: 231/255, alpha: 1)
         contentView.layer.borderColor = UIColor.gray.cgColor
-//        contentView.layer.borderWidth = 1
     }
     // MARK: - Action
     
@@ -79,6 +78,8 @@ final class MyOwnCell: UITableViewCell  {
             delegate?.didTapFavoriteButton(id)
         }
     }
+    
+    // MARK: - Private method
     
     private func changeFavorite() {
         if isFavorite {

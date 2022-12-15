@@ -15,7 +15,7 @@ class HeaderView : UIView {
     
     weak var delegate: HeaderViewDelegate?
     
-    //MARK: - UIElements
+    //MARK: - UI Elements
     
     lazy var welcomeTitle : UILabel = {
         let welcomeTitle = UILabel()
@@ -25,7 +25,7 @@ class HeaderView : UIView {
         welcomeTitle.textAlignment = .center
         welcomeTitle.textColor = .black
         return welcomeTitle
-    } ()
+    }()
     
     lazy var americanButton = createButton(cuisine: .american)
     lazy var italianButton = createButton(cuisine: .italian)

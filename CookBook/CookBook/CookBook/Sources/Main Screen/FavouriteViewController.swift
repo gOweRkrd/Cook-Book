@@ -4,11 +4,14 @@ class FavouriteViewController: UIViewController {
     
     private let tableView = UITableView()
     private lazy var emptyStateView = EmptyStateView()
+    
     private let identifier = "MyCell"
+    
     private let storageManager = StorageManager.shared
     private var favoriteItems = [Recipe]()
     
-    //MARK: - Lifecycle
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,9 +58,9 @@ class FavouriteViewController: UIViewController {
     }
 }
 
+// MARK: - TableView DataSource
+
 extension FavouriteViewController: UITableViewDataSource {
-    
-    // MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         favoriteItems.count
@@ -76,9 +79,9 @@ extension FavouriteViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - TableView Delegate
+
 extension FavouriteViewController: UITableViewDelegate {
-    
-    // MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -102,5 +105,4 @@ extension FavouriteViewController: UITableViewDelegate {
             }
         }
     }
-    
 }
