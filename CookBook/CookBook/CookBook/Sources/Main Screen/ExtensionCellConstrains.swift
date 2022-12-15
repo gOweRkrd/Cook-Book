@@ -5,24 +5,19 @@ extension MyOwnCell {
     private func setupConstraintsCell() {
         
         NSLayoutConstraint.activate([
-            imageRecipe.topAnchor.constraint(equalTo: contentView.topAnchor,constant:.imageRecipeTopAnchor),
-            imageRecipe.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant:.imageRecipeLeadingAnchor),
-            imageRecipe.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant:.imageRecipeTrailingAnchor),
-            imageRecipe.heightAnchor.constraint(equalTo: contentView.heightAnchor,constant:.imageRecipeHeightAnchor),
-        ])
-        
-        NSLayoutConstraint.activate([
-            titleRecipe.topAnchor.constraint(equalTo: imageRecipe.topAnchor, constant:.titleRecipeLabelTopAnchor),
-            titleRecipe.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant:.titleRecipeLabelLeadingAnchor),
-            titleRecipe.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant:.titleRecipeLabelTrailingAnchor),
-            titleRecipe.heightAnchor.constraint(equalTo: contentView.heightAnchor,constant:.titleRecipeLabelHeightAnchor),
-        ])
-        
-        NSLayoutConstraint.activate([
-            favouritesButton.topAnchor.constraint(equalTo: contentView.topAnchor,constant:.favouritesButtonLabelTopAnchor),
-            favouritesButton.leadingAnchor.constraint(equalTo:imageRecipe.trailingAnchor,constant:.favouritesButtonLabelLeadingAnchor),
-            favouritesButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant:.favouritesButtonLabelTrailingAnchor),
-            favouritesButton.heightAnchor.constraint(equalTo: contentView.heightAnchor,constant:.favouritesButtonLabelHeightAnchor),
+            imageRecipe.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .imageRecipeTopAnchor),
+            imageRecipe.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: .imageRecipeLeadingAnchor),
+            imageRecipe.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: .imageRecipeTrailingAnchor),
+            imageRecipe.heightAnchor.constraint(equalTo: contentView.heightAnchor, constant: .imageRecipeHeightAnchor),
+            
+            titleRecipe.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            titleRecipe.centerXAnchor.constraint(equalTo: imageRecipe.centerXAnchor,constant: .titleRecipeCenterXAnchor),
+            
+            favouritesButton.heightAnchor.constraint(equalToConstant: .favouritesButtonHeightTopAnchor),
+            favouritesButton.widthAnchor.constraint(equalToConstant: .favouritesButtonWidthTopAnchor),
+            favouritesButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .favouritesButtonLabelTopAnchor),
+            favouritesButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,
+                                                       constant: .favouritesButtonLabelTrailingAnchor)
         ])
     }
     
@@ -44,19 +39,17 @@ extension MyOwnCell {
 // MARK: - Constant Constraints
 
 private extension CGFloat {
-    static let imageRecipeTopAnchor: CGFloat = 20
-    static let imageRecipeLeadingAnchor: CGFloat = 80
-    static let imageRecipeTrailingAnchor: CGFloat = -180
-    static let imageRecipeHeightAnchor: CGFloat = -70
+    static let imageRecipeTopAnchor: CGFloat = 10
+    static let imageRecipeLeadingAnchor: CGFloat = 15
+    static let imageRecipeTrailingAnchor: CGFloat = -110
+    static let imageRecipeHeightAnchor: CGFloat = -30
     
-    static let titleRecipeLabelTopAnchor: CGFloat = 120
-    static let titleRecipeLabelLeadingAnchor: CGFloat = 10
-    static let titleRecipeLabelTrailingAnchor: CGFloat = -120
-    static let titleRecipeLabelHeightAnchor : CGFloat = -85
-    
+    static let titleRecipeCenterXAnchor: CGFloat = 5
+
+    static let favouritesButtonHeightTopAnchor: CGFloat = 50
+    static let favouritesButtonWidthTopAnchor: CGFloat = 50
     static let favouritesButtonLabelTopAnchor: CGFloat = 16
-    static let favouritesButtonLabelLeadingAnchor: CGFloat = 10
     static let favouritesButtonLabelTrailingAnchor: CGFloat = -130
-    static let favouritesButtonLabelHeightAnchor : CGFloat = -190
+   
     
 }
