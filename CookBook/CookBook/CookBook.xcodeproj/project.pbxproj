@@ -18,6 +18,7 @@
 		5024449A2935FDB400816569 /* FavouriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502444992935FDB400816569 /* FavouriteViewController.swift */; };
 		5024449C2935FF7700816569 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024449B2935FF7700816569 /* UIColorExtension.swift */; };
 		502444A429362C2F00816569 /* CookBookRecipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502444A329362C2F00816569 /* CookBookRecipes.swift */; };
+		502966A5294B46B800A739E9 /* Int+Scaling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502966A4294B46B800A739E9 /* Int+Scaling.swift */; };
 		504DEFCF2941C85800DEFF06 /* MyOwnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504DEFCE2941C85800DEFF06 /* MyOwnCell.swift */; };
 		D84E57B12944A7A100CD19AD /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84E57B02944A7A100CD19AD /* UIView+Extension.swift */; };
 		D84E57B32944ABEA00CD19AD /* CuisineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84E57B22944ABEA00CD19AD /* CuisineButton.swift */; };
@@ -52,6 +53,7 @@
 		502444992935FDB400816569 /* FavouriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteViewController.swift; sourceTree = "<group>"; };
 		5024449B2935FF7700816569 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		502444A329362C2F00816569 /* CookBookRecipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookBookRecipes.swift; sourceTree = "<group>"; };
+		502966A4294B46B800A739E9 /* Int+Scaling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Scaling.swift"; sourceTree = "<group>"; };
 		504DEFCE2941C85800DEFF06 /* MyOwnCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOwnCell.swift; sourceTree = "<group>"; };
 		D84E57B02944A7A100CD19AD /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		D84E57B22944ABEA00CD19AD /* CuisineButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisineButton.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			children = (
 				D86DC3CE293A9264005A8797 /* String+Extension.swift */,
 				D84E57B02944A7A100CD19AD /* UIView+Extension.swift */,
+				502966A4294B46B800A739E9 /* Int+Scaling.swift */,
 				5024449B2935FF7700816569 /* UIColorExtension.swift */,
 			);
 			path = Extension;
@@ -363,6 +366,7 @@
 				D84E57C42944D02A00CD19AD /* FavoriteCell.swift in Sources */,
 				D84E57C92944E68F00CD19AD /* SearchViewController.swift in Sources */,
 				502444892935E82200816569 /* ExtensionColorView.swift in Sources */,
+				502966A5294B46B800A739E9 /* Int+Scaling.swift in Sources */,
 				D84E57BA2944B6E900CD19AD /* StorageManager.swift in Sources */,
 				502444852935E81000816569 /* ExtensionSetupTableView.swift in Sources */,
 				502444882935E82200816569 /* ExtensionSetupConstrains.swift in Sources */,

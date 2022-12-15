@@ -22,7 +22,8 @@ final class MyOwnCell: UITableViewCell  {
     
     lazy var imageRecipe : UIImageView = {
         let imageRecipe = UIImageView ()
-        imageRecipe.backgroundColor = .red
+        imageRecipe.layer.masksToBounds = true
+        imageRecipe.layer.cornerRadius = 20
         imageRecipe.contentMode = .scaleAspectFill
         return imageRecipe
     }()
@@ -31,8 +32,7 @@ final class MyOwnCell: UITableViewCell  {
         let titleRecipe = UILabel()
         titleRecipe.font = UIFont.systemFont(ofSize: 14)
         titleRecipe.font = UIFont.boldSystemFont(ofSize: 14)
-        titleRecipe.numberOfLines = 10
-        titleRecipe.textAlignment = .justified
+        titleRecipe.numberOfLines = 2
         titleRecipe.textAlignment = .center
         titleRecipe.textColor = .black
         return titleRecipe
@@ -68,7 +68,7 @@ final class MyOwnCell: UITableViewCell  {
     private func castomizeCell () {
         contentView.backgroundColor = UIColor(red: 240/255, green: 235/255, blue: 231/255, alpha: 1)
         contentView.layer.borderColor = UIColor.gray.cgColor
-        contentView.layer.borderWidth = 1
+//        contentView.layer.borderWidth = 1
     }
     // MARK: - Action
     
@@ -88,3 +88,4 @@ final class MyOwnCell: UITableViewCell  {
         }
     }
 }
+
