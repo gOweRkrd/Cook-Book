@@ -12,6 +12,8 @@ final class DetailViewController: UIViewController {
     var id: Int?
     var isFavorite = false
     
+    //    let h: CGFloat = view.heightAnchor / 2
+    
     //MARK: - UIElements
     
     private var manager = RecipeManager()
@@ -23,14 +25,14 @@ final class DetailViewController: UIViewController {
     private lazy var image: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "")
-        imageView.contentMode = .scaleAspectFill
+        //        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.text = ""
-        label.font = .systemFont(ofSize: 21)
+        label.font = .boldSystemFont(ofSize: 21)
         label.textAlignment = .center
         label.numberOfLines = 2
         return label
@@ -119,28 +121,25 @@ final class DetailViewController: UIViewController {
             image.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             image.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             image.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            image.heightAnchor.constraint(equalToConstant: 250),
+            image.heightAnchor.constraint(equalToConstant: 1.fitScreen),
             
-            favouriteButton.trailingAnchor.constraint(equalTo: image.trailingAnchor, constant: -10),
             favouriteButton.topAnchor.constraint(equalTo: image.topAnchor, constant: 10),
+            favouriteButton.trailingAnchor.constraint(equalTo: image.trailingAnchor, constant: -15),
             favouriteButton.widthAnchor.constraint(equalToConstant: 50),
             favouriteButton.heightAnchor.constraint(equalToConstant: 50),
             
-            nameLabel.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 15),
-            nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            nameLabel.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 5),
+            nameLabel.trailingAnchor.constraint(equalTo: image.trailingAnchor, constant: -20),
+            nameLabel.leadingAnchor.constraint(equalTo: image.leadingAnchor, constant: 20),
             
+            tableView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.topAnchor.constraint(equalTo: nameLabel.bottomAnchor),
-            tableView.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor),
-            
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 30),
+
+            descriptionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10),
             descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            descriptionLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -view.safeAreaInsets.bottom),
-            descriptionLabel.heightAnchor.constraint(equalToConstant: 250)
-            
-            
         ])
     }
     
