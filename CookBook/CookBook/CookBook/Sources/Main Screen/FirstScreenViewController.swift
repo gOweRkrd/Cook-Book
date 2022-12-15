@@ -8,9 +8,10 @@ class FirstScreenViewController: UIViewController {
         let nextButton = UIButton()
         nextButton.backgroundColor = UIColor(red: 244/255, green: 201/255, blue: 70/255, alpha: 1)
         nextButton.addTarget(self, action: #selector(goToNextScreen), for: .touchUpInside)
-        nextButton.setTitle("Start cooking  -> -> -> ", for: .normal)
+        nextButton.titleLabel!.font = .boldSystemFont(ofSize: 30)
+        nextButton.setTitle("START COOKING", for: .normal)
         nextButton.setTitleColor(UIColor.black, for: .normal)
-        nextButton.layer.cornerRadius = 14
+        nextButton.layer.cornerRadius = .nextButtonHeightAnchor / 2
         return nextButton
     } ()
     
@@ -57,12 +58,11 @@ extension FirstScreenViewController {
         ])
        
         NSLayoutConstraint.activate([
-            nextButton.topAnchor.constraint(equalTo: view.bottomAnchor, constant:.nextButtonBottomAnchor),
-            nextButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .nextButtonLeadingAnchor),
-            nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: .nextButtonTrailingAnchor),
-            nextButton.heightAnchor.constraint(equalToConstant: .nextButtonHeightAnchor)
+            nextButton.heightAnchor.constraint(equalToConstant: .nextButtonHeightAnchor),
+            nextButton.widthAnchor.constraint(equalToConstant: .nextButtonWidthAnchor),
+            nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -.nextButtonHeightAnchor)
         ])
-        
     }
     
     private func setupFirstScreen() {
@@ -70,32 +70,19 @@ extension FirstScreenViewController {
             imageViewFirstScreen,
             nextButton,
         ])
-        
     }
     
     private func configureViewFistScreen() {
         setupFirstScreen()
         setupConstraintsFirstScreen()
-        
     }
 }
 
 private extension CGFloat {
     
-    static let imageViewButtonTopAnchor: CGFloat = 250
-    static let imageViewButtonLeadingAnchor: CGFloat = 0
-    static let imageViewButtonTrailingAnchor: CGFloat = -0
-    static let imageViewButtonHeightAnchor : CGFloat = 1
-    
-    static let nextButtonBottomAnchor: CGFloat = -200
-    static let nextButtonLeadingAnchor: CGFloat = 40
-    static let nextButtonTrailingAnchor: CGFloat = -40
+    static let nextButtonWidthAnchor: CGFloat = 300
     static let nextButtonHeightAnchor : CGFloat = 60
     
-    static let commandLabelTopAnchor: CGFloat = 50
-    static let commandLabelLeadingAnchor: CGFloat = 20
-    static let commandLabelTrailingAnchor: CGFloat = -20
-    static let commandLabelHeightAnchor : CGFloat = 60
     
 }
 
