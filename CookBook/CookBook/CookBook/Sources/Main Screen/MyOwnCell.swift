@@ -1,10 +1,3 @@
-//
-//  MyOwnCell.swift
-//  CookBook
-//
-//  Created by Александр Косяков on 08.12.2022.
-//
-
 import UIKit
 
 protocol MyOwnCellDelegate: AnyObject {
@@ -45,6 +38,7 @@ final class MyOwnCell: UITableViewCell  {
         return favouritesButton
     }()
     
+    
     // MARK: - Initialization
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -59,19 +53,20 @@ final class MyOwnCell: UITableViewCell  {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    // MARK: - Public Methods
+    
     func configureCell(isFavorite: Bool, id: Int) {
         self.isFavorite = isFavorite
         self.id = id
         changeFavorite()
     }
     
-    private func castomizeCell () {
-        contentView.backgroundColor = UIColor(red: 240/255, green: 235/255, blue: 231/255, alpha: 1)
-        contentView.layer.borderColor = UIColor.gray.cgColor
-    }
+    
     // MARK: - Action
     
-    @objc private func favouritesTapButton(_ sender: UIButton!) {
+    @objc
+    private func favouritesTapButton(_ sender: UIButton!) {
         if let id {
             isFavorite.toggle()
             changeFavorite()
@@ -79,7 +74,13 @@ final class MyOwnCell: UITableViewCell  {
         }
     }
     
-    // MARK: - Private method
+    
+    // MARK: - Private Methods
+    
+    private func castomizeCell () {
+        contentView.backgroundColor = UIColor(red: 240/255, green: 235/255, blue: 231/255, alpha: 1)
+        contentView.layer.borderColor = UIColor.gray.cgColor
+    }
     
     private func changeFavorite() {
         if isFavorite {

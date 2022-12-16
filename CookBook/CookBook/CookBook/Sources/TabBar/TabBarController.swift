@@ -9,11 +9,16 @@ import UIKit
 
 class TabBarController: UITabBarController {
     
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         generateTabBar()
         setTabBarAppearance()
     }
+  
+    // MARK: - Private Method
+    
     private func generateTabBar() {
         viewControllers = [
             generateVC(
@@ -47,7 +52,6 @@ class TabBarController: UITabBarController {
         let positionOnY: CGFloat = 14
         let width = tabBar.bounds.width - positionOnX * 2
         let height = tabBar.bounds.height + positionOnY * 2
-        
         let roundLayer = CAShapeLayer()
         
         let bezierPath = UIBezierPath(
@@ -61,14 +65,11 @@ class TabBarController: UITabBarController {
         )
         
         roundLayer.path = bezierPath.cgPath
-        
-        tabBar.layer.insertSublayer(roundLayer, at: 0)
-        
-        tabBar.itemWidth = width / 5
-        tabBar.itemPositioning = .centered
-        
         roundLayer.fillColor = UIColor.mainWhite.cgColor
         
+        tabBar.layer.insertSublayer(roundLayer, at: 0)
+        tabBar.itemWidth = width / 5
+        tabBar.itemPositioning = .centered
         tabBar.tintColor = .tabBarItemAccent
         tabBar.unselectedItemTintColor = .tabBarItemLight
     }

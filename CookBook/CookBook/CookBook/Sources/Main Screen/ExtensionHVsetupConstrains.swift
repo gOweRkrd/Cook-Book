@@ -72,6 +72,4 @@ private extension CGFloat {
     
     static let sideButton: CGFloat = 20
     static let topAnchorButton: CGFloat = 70
-    
-    
 }

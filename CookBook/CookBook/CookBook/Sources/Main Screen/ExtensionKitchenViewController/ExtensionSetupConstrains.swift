@@ -1,10 +1,3 @@
-//
-//  ExtensionalConstrains.swift
-//  TeskTaskProject
-//
-//  Created by Александр Косяков on 15.11.2022.
-//
-
 import UIKit
 
 extension KitchenViewController {

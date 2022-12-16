@@ -1,24 +1,17 @@
-//
-//  Name.swift
-//  CookBook
-//
-//  Created by Дария Григорьева on 28.11.2022.
-//
-
 import UIKit
 
 final class DetailViewController: UIViewController {
     
     var id: Int?
     var isFavorite = false
-        
-    private var manager = RecipeManager()
+    
     private let storageManager = StorageManager.shared
-    private var ingredients = [Ingredient]()
     private let cellReuseIdentifier = "cell"
+    
+    private var manager = RecipeManager()
+    private var ingredients = [Ingredient]()
     private var detailRecipe: DetailRecipe?
     private var text: String?
-   
     
     //MARK: - UIElements
     
@@ -82,11 +75,14 @@ final class DetailViewController: UIViewController {
         setupHierarchy()
         setupLayout()
         setupView()
+        changeFavorite()
+        fetchDelegate()
+    }
+    private func fetchDelegate() {
         manager.delegate = self
         if let id = id {
             manager.fetchDetailRecipe(id: String(id))
         }
-        changeFavorite()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -103,7 +99,7 @@ final class DetailViewController: UIViewController {
         tabBarController?.tabBar.isHidden = false
     }
     
-    //MARK: - Setup
+    // MARK: - Setup
     
     private func setupView() {
         tableView.dataSource = self
@@ -112,7 +108,7 @@ final class DetailViewController: UIViewController {
         tableView.backgroundColor = .clear
     }
     
-    //MARK: - Action
+    // MARK: - Action
     
     @objc private func didTapFavoriteButton() {
         if isFavorite, let id {
@@ -183,18 +179,14 @@ extension DetailViewController: RecipeManagerDelegate {
         }
     }
     
-    func didCuisinesRecipe(recipes: [CuisineRecipe]) {
-        
-    }
-    
-    func didUpdateSearchRecipes(recipes: [SearchRecipe]) {
-        
-    }
+    func didCuisinesRecipe(recipes: [CuisineRecipe]) { }
+    func didUpdateSearchRecipes(recipes: [SearchRecipe]) { }
 }
 
-//MARK: - UITableViewDataSource, UITableViewDelegate
+// MARK: - UITableViewDataSource
 
-extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
+extension DetailViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         ingredients.count
     }
@@ -208,6 +200,11 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         cell.backgroundColor = .clear
         return cell
     }
+}
+
+// MARK: - UITableViewDelegate
+
+extension DetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -220,7 +217,8 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-//MARK: - Constrains
+
+// MARK: - Constrains
 
 extension DetailViewController {
     
@@ -261,23 +259,15 @@ extension DetailViewController {
         ])
     }
 }
+
 // MARK: - Constant Constraints
 
 private extension CGFloat {
     static let tenSizeAnchor: CGFloat = 10
     static let twentySizeAnchor: CGFloat = 20
-    
     static let favouriteButtonAnchorTrailingAnchor: CGFloat = -15
     static let favouriteButtonSize: CGFloat = 50
     static let nameLabelTopAnchor: CGFloat = 5
     static let tableViewBottomAnchor: CGFloat = 30
-    
-    
-    
-   
-    
-
-   
-    
 }
 

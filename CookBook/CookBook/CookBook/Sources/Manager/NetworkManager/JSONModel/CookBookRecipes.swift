@@ -7,8 +7,6 @@
 
 import Foundation
 
-// MARK: - Model Networking
-
 struct CookBookRecipes: Decodable {
     let cuisineRecipes: [CuisineRecipe]
     

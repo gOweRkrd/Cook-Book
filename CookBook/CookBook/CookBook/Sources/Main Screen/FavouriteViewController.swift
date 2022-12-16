@@ -3,9 +3,12 @@ import UIKit
 final class FavouriteViewController: UIViewController {
     
     private let tableView = UITableView()
+    
     private let identifier = "MyCell"
     private let storageManager = StorageManager.shared
+    
     private lazy var emptyStateView = EmptyStateView()
+    
     private var favoriteItems = [Recipe]()
     
     // MARK: - Lifecycle

@@ -2,6 +2,19 @@ import UIKit
 
 extension MyOwnCell {
     
+    func configureView() {
+        setupCell()
+        setupConstraintsCell()
+    }
+    
+    private func setupCell() {
+        contentView.addSubviews([
+            titleRecipe,
+            imageRecipe,
+            favouritesButton
+        ])
+    }
+    
     private func setupConstraintsCell() {
         
         NSLayoutConstraint.activate([
@@ -19,20 +32,6 @@ extension MyOwnCell {
             favouritesButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,
                                                        constant: .favouritesButtonLabelTrailingAnchor)
         ])
-    }
-    
-    func setupCell() {
-        contentView.addSubviews([
-            titleRecipe,
-            imageRecipe,
-            favouritesButton
-        ])
-    }
-    
-    func configureView() {
-        setupCell()
-        setupConstraintsCell()
-        
     }
 }
 

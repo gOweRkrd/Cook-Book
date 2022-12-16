@@ -1,10 +1,3 @@
-//
-//  RecipeManager.swift
-//  CookBook
-//
-//  Created by Дария Григорьева on 30.11.2022.
-//
-
 import UIKit
 
 protocol RecipeManagerDelegate {
@@ -41,6 +34,8 @@ struct RecipeManager {
     private let searchURL = "https://api.spoonacular.com/recipes/autocomplete?&query=%@&apiKey="
     
     
+    // MARK: - Public Method
+
     func fetchDetailRecipe(id: String?) {
         guard let id else {
             delegate?.didFailWithError(error: "Not correct recipe!")
@@ -61,6 +56,38 @@ struct RecipeManager {
         let urlString = String(format: searchURL, text) + apiKey
         performRequest(with: urlString, and: .searchRecipes)
     }
+    
+    func downloadImage(from urlString: String, completed: @escaping (UIImage?) -> Void) {
+        let cacheKey = NSString(string: urlString)
+        
+        if let image = cache.object(forKey: cacheKey) {
+            completed(image)
+            return
+        }
+        
+        guard let url = URL(string: urlString) else {
+            completed(nil)
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            guard error == nil,
+                  let response = response as? HTTPURLResponse, response.statusCode == 200,
+                  let data = data,
+                  let image = UIImage(data: data) else {
+                completed(nil)
+                return
+            }
+            
+            self.cache.setObject(image, forKey: cacheKey)
+            completed(image)
+        }
+        
+        task.resume()
+    }
+    
+    
+    // MARK: - Private Method
     
     private func performRequest(with urlString: String, and type: RecipeType) {
         
@@ -131,34 +158,5 @@ struct RecipeManager {
             delegate?.didFailWithError(error: error.localizedDescription)
             return []
         }
-    }
-    
-    func downloadImage(from urlString: String, completed: @escaping (UIImage?) -> Void) {
-        let cacheKey = NSString(string: urlString)
-        
-        if let image = cache.object(forKey: cacheKey) {
-            completed(image)
-            return
-        }
-        
-        guard let url = URL(string: urlString) else {
-            completed(nil)
-            return
-        }
-        
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            guard error == nil,
-                  let response = response as? HTTPURLResponse, response.statusCode == 200,
-                  let data = data,
-                  let image = UIImage(data: data) else {
-                completed(nil)
-                return
-            }
-            
-            self.cache.setObject(image, forKey: cacheKey)
-            completed(image)
-        }
-        
-        task.resume()
     }
 }

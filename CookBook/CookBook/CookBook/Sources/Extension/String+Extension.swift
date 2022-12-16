@@ -1,10 +1,3 @@
-//
-//  String+Extension.swift
-//  CookBook
-//
-//  Created by Дария Григорьева on 03.12.2022.
-//
-
 import Foundation
 
 extension String {
@@ -15,15 +8,18 @@ extension String {
         }
         
         do {
-            return try NSAttributedString(data: data, options: [
-                .documentType: NSAttributedString.DocumentType.html,
-                .characterEncoding: String.Encoding.utf8.rawValue
-            ], documentAttributes: nil)
+            return try NSAttributedString(
+                data: data,
+                options: [
+                    .documentType: NSAttributedString.DocumentType.html,
+                    .characterEncoding: String.Encoding.utf8.rawValue
+                ], documentAttributes: nil
+            )
+            
         } catch {
             return NSAttributedString()
         }
     }
-    
     
     var htmlToString: String {
         return htmlToAttributedString?.string ?? ""

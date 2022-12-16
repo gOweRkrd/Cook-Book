@@ -1,10 +1,3 @@
-//
-//  FavoriteCell.swift
-//  CookBook
-//
-//  Created by Дария Григорьева on 10.12.2022.
-//
-
 import UIKit
 
 final class FavoriteCell: UITableViewCell {

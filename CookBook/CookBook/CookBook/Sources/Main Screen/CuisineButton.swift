@@ -1,16 +1,13 @@
-//
-//  CuisineButton.swift
-//  CookBook
-//
-//  Created by Дария Григорьева on 10.12.2022.
-//
-
 import UIKit
 
-class CuisineButton: UIButton {
+final class CuisineButton: UIButton {
     
     let cuisine: Cuisine
     private let text: String
+    
+    
+    // MARK: - Initialization
+    
     init(text: String, cuisine: Cuisine) {
         self.text = text
         self.cuisine = cuisine
@@ -22,6 +19,9 @@ class CuisineButton: UIButton {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
+    // MARK: - Private Method
     
     private func setupView() {
         setTitle(text, for: .normal)

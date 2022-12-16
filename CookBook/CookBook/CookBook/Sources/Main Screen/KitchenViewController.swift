@@ -1,6 +1,5 @@
 import UIKit
 
-
 final class KitchenViewController: UIViewController  {
     
     let headerView = HeaderView()

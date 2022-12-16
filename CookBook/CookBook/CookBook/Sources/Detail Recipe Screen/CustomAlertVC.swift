@@ -1,10 +1,3 @@
-//
-//  CustomAlertVC.swift
-//  CookBook
-//
-//  Created by Дария Григорьева on 10.12.2022.
-//
-
 import UIKit
 
 final class CustomAlertVC: UIViewController {
@@ -14,6 +7,7 @@ final class CustomAlertVC: UIViewController {
     private let messageLabel = UILabel()
     private let actionButton = UIButton()
     private let padding: CGFloat = 20
+    
     private var message: String?
     
     private let containerView: UIView = {
@@ -64,7 +58,8 @@ final class CustomAlertVC: UIViewController {
     
     // MARK: - Action
     
-    @objc func dismissVC() {
+    @objc
+    private func dismissVC() {
         dismiss(animated: true)
     }
 }

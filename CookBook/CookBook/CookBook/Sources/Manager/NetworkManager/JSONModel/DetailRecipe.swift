@@ -1,10 +1,3 @@
-//
-//  DetailRecipe.swift
-//  CookBook
-//
-//  Created by Дария Григорьева on 30.11.2022.
-//
-
 import Foundation
 
 struct DetailRecipe: Decodable {

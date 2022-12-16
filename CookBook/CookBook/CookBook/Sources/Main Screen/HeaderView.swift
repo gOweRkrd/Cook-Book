@@ -1,10 +1,3 @@
-//
-//  HeadeView.swift
-//  TeskTaskProject
-//
-//  Created by Александр Косяков on 13.11.2022.
-//
-
 import UIKit
 
 protocol HeaderViewDelegate: AnyObject {
@@ -27,13 +20,30 @@ final class HeaderView : UIView {
         return welcomeTitle
     }()
     
-    lazy var americanButton = createButton(cuisine: .american)
-    lazy var italianButton = createButton(cuisine: .italian)
-    lazy var japaneseButton = createButton(cuisine: .japanese)
-    lazy var mexicanButton = createButton(cuisine: .mexican)
-    lazy var germanButton = createButton(cuisine: .german)
-    lazy var koreanButton = createButton(cuisine: .korean)
+    lazy var americanButton: UIButton = {
+        createButton(cuisine: .american)
+    }()
     
+    lazy var japaneseButton: UIButton = {
+        createButton(cuisine: .japanese)
+    }()
+    
+    lazy var germanButton: UIButton = {
+        createButton(cuisine: .german)
+    }()
+    
+    lazy var italianButton: UIButton = {
+        createButton(cuisine: .italian)
+    }()
+    
+    lazy var koreanButton: UIButton = {
+        createButton(cuisine: .korean)
+    }()
+    
+    lazy var mexicanButton: UIButton = {
+        createButton(cuisine: .mexican)
+    }()
+  
     
     // MARK: - Initialization
     

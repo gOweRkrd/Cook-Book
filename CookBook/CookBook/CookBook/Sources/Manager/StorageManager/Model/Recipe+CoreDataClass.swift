@@ -10,6 +10,13 @@ import Foundation
 import CoreData
 
 @objc(Recipe)
-public class Recipe: NSManagedObject {
+public class Recipe: NSManagedObject, Identifiable {
 
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Recipe> {
+        return NSFetchRequest<Recipe>(entityName: "Recipe")
+    }
+
+    @NSManaged public var id: String
+    @NSManaged public var title: String
+    @NSManaged public var image: String?
 }

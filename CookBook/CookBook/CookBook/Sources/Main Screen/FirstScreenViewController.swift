@@ -2,7 +2,7 @@ import UIKit
 
 final class FirstScreenViewController: UIViewController {
     
-    //MARK: - UIElements
+    // MARK: - UIElements
     
     private lazy var nextButton : UIButton = {
         let nextButton = UIButton()
@@ -22,7 +22,8 @@ final class FirstScreenViewController: UIViewController {
         return imageViewFirstScreen
     } ()
     
-    //MARK: - Lifecycle
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +38,8 @@ final class FirstScreenViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
     }
     
-    //MARK: - Action
+    
+    // MARK: - Action
     
     @objc private func goToNextScreen() {
         let nextScreen = TabBarController()
@@ -45,7 +47,8 @@ final class FirstScreenViewController: UIViewController {
     }
 }
 
-//MARK: - Constrains
+
+// MARK: - Constrains
 
 extension FirstScreenViewController {
     
@@ -78,14 +81,12 @@ extension FirstScreenViewController {
     }
 }
 
-//MARK: - Constant constrains
+// MARK: - Constant constrains
 
 private extension CGFloat {
     
     static let nextButtonWidthAnchor: CGFloat = 300
     static let nextButtonHeightAnchor : CGFloat = 60
-    
-    
 }
 
 

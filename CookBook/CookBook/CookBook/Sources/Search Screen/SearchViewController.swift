@@ -1,23 +1,21 @@
-//
-//  SearchViewController.swift
-//  CookBook
-//
-//  Created by Дария Григорьева on 10.12.2022.
-//
-
 import UIKit
 
 final class SearchViewController: UIViewController {
     
-    private var manager = RecipeManager()
     private let storageManager = StorageManager.shared
     private let identifier = "Cell"
+    
+    private var manager = RecipeManager()
     private var searchRecipes = [SearchRecipe]()
     private var favoriteIds: Set<Int> = []
     
     // MARK: - UIElements
     
-    private lazy var tableView = UITableView()
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        return tableView
+    }()
+    
     private lazy var searchController: UISearchController = {
         let search = UISearchController(searchResultsController: nil)
         
@@ -37,8 +35,10 @@ final class SearchViewController: UIViewController {
         
         manager.delegate = self
         favoriteIds = storageManager.fetchIds()
+        
         navigationItem.searchController = searchController
         view.backgroundColor = .backgroundColor
+        
         createTableView()
     }
     
@@ -48,15 +48,13 @@ final class SearchViewController: UIViewController {
     }
     private func createTableView() {
         view.addSubview(tableView)
-        tableView.frame = view.frame
         
+        tableView.frame = view.frame
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.backgroundColor = .clear
     }
-    
-    
 }
 
 // MARK: - UITableViewDataSource
@@ -84,8 +82,10 @@ extension SearchViewController: UITableViewDelegate {
         
         let detailVC = DetailViewController()
         let searchId = searchRecipes[indexPath.row].id
+        
         detailVC.id = searchId
         detailVC.isFavorite = favoriteIds.contains(searchId)
+        
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }
