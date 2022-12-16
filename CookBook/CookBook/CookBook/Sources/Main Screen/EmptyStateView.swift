@@ -7,7 +7,9 @@
 
 import UIKit
 
-class EmptyStateView: UIView {
+final class EmptyStateView: UIView {
+    
+    //MARK: - UIElements
     
     private lazy var messageLabel: UILabel = {
         let label = UILabel()
@@ -26,6 +28,7 @@ class EmptyStateView: UIView {
         return imageView
     }()
     
+    // MARK: - Initialization
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,19 +40,30 @@ class EmptyStateView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Constrains
     
     private func setupView() {
         addSubviews([messageLabel, imageView])
         
         NSLayoutConstraint.activate([
             messageLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            messageLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            messageLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            messageLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: .messageLabelSizeAnchor),
+            messageLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -.messageLabelSizeAnchor),
         
-            imageView.bottomAnchor.constraint(equalTo: messageLabel.topAnchor, constant: -20),
-            imageView.widthAnchor.constraint(equalToConstant: 200),
-            imageView.heightAnchor.constraint(equalToConstant: 200),
+            imageView.bottomAnchor.constraint(equalTo: messageLabel.topAnchor, constant: -.messageLabelSizeAnchor),
+            imageView.widthAnchor.constraint(equalToConstant: .imageViewSizeAnchor),
+            imageView.heightAnchor.constraint(equalToConstant: .imageViewSizeAnchor),
             imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
     }
 }
+
+// MARK: - Constant Constraints
+
+private extension CGFloat {
+    static let messageLabelSizeAnchor: CGFloat = 20
+    static let imageViewSizeAnchor: CGFloat = 200
+    
+}
+
+

@@ -18,6 +18,7 @@ class StorageManager {
     }
     
     // MARK: - Core Data stack
+    
     private let persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "RecipeCoreData")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -71,6 +72,7 @@ class StorageManager {
     }
     
     // MARK: - Core Data Saving support
+    
     private func saveContext () {
         if viewContext.hasChanges {
             do {

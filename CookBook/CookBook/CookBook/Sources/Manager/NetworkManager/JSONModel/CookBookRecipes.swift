@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK: - CookBook
+// MARK: - Model Networking
 
 struct CookBookRecipes: Decodable {
     let cuisineRecipes: [CuisineRecipe]
@@ -16,8 +16,6 @@ struct CookBookRecipes: Decodable {
         case cuisineRecipes = "results"
     }
 }
-
-
 struct CuisineRecipe: Decodable {
     var id: Int
     var title: String

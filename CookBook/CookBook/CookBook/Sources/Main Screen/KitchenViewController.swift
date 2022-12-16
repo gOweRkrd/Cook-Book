@@ -1,13 +1,13 @@
 import UIKit
 
 
-class KitchenViewController: UIViewController  {
+final class KitchenViewController: UIViewController  {
     
     let headerView = HeaderView()
     let myTableView = UITableView()
-
-    private var manager = RecipeManager()
+    
     private let storageManager = StorageManager.shared
+    private var manager = RecipeManager()
     private var cuisineRecipes = [CuisineRecipe]()
     private var favoriteIds: Set<Int> = []
     
@@ -35,9 +35,9 @@ class KitchenViewController: UIViewController  {
     }
 }
 
+// MARK: - UITableViewDataSource
+
 extension KitchenViewController: UITableViewDataSource {
-    
-    // MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         cuisineRecipes.count
@@ -50,7 +50,7 @@ extension KitchenViewController: UITableViewDataSource {
         }
         
         let recipe = cuisineRecipes[indexPath.row]
-       
+        
         cell.titleRecipe.text = cuisineRecipes[indexPath.row].title
         cell.delegate = self
         cell.configureCell(isFavorite: favoriteIds.contains(recipe.id), id: recipe.id)
@@ -66,9 +66,9 @@ extension KitchenViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - UITableViewDelegate
+
 extension KitchenViewController: UITableViewDelegate {
-    
-    // MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -81,9 +81,9 @@ extension KitchenViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - RecipeManagerDelegate
+
 extension KitchenViewController: RecipeManagerDelegate {
-    
-    // MARK: - RecipeManagerDelegate
     
     func didFailWithError(error: String) {
         let alertVC = UIAlertController(title: error, message: nil, preferredStyle: .alert)
@@ -121,9 +121,10 @@ extension KitchenViewController: HeaderViewDelegate {
         manager.fetchCuisineRecipe(cuisine: cuisine)
     }
 }
+
+// MARK: - MyOwnCellDelegate
+
 extension KitchenViewController: MyOwnCellDelegate {
-    
-    // MARK: - MyOwnCellDelegate
     
     func didTapFavoriteButton(_ id: Int) {
         guard let cuisineRecipe = cuisineRecipes.first(where: { $0.id == id }) else {
@@ -139,7 +140,4 @@ extension KitchenViewController: MyOwnCellDelegate {
             storageManager.saveRecipe(recipe)
         }
     }
-    
-    
-    
 }

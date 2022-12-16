@@ -1,6 +1,6 @@
 import UIKit
 
-class FirstScreenViewController: UIViewController {
+final class FirstScreenViewController: UIViewController {
     
     //MARK: - UIElements
     
@@ -77,6 +77,8 @@ extension FirstScreenViewController {
         setupConstraintsFirstScreen()
     }
 }
+
+//MARK: - Constant constrains
 
 private extension CGFloat {
     

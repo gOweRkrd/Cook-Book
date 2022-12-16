@@ -6,24 +6,31 @@
 //
 
 import UIKit
-class SearchViewController: UIViewController {
-    
-    private lazy var tableView = UITableView()
-    private lazy var searchController: UISearchController = {
-        let search = UISearchController(searchResultsController: nil)
-        search.obscuresBackgroundDuringPresentation = false
-        search.searchBar.placeholder = "Search recipes"
-        search.searchBar.sizeToFit()
-        search.searchBar.searchBarStyle = .default
-        search.searchBar.delegate = self
-        return search
-    }()
+
+final class SearchViewController: UIViewController {
     
     private var manager = RecipeManager()
     private let storageManager = StorageManager.shared
     private let identifier = "Cell"
     private var searchRecipes = [SearchRecipe]()
     private var favoriteIds: Set<Int> = []
+    
+    // MARK: - UIElements
+    
+    private lazy var tableView = UITableView()
+    private lazy var searchController: UISearchController = {
+        let search = UISearchController(searchResultsController: nil)
+        
+        search.obscuresBackgroundDuringPresentation = false
+        search.searchBar.placeholder = "Search recipes"
+        search.searchBar.sizeToFit()
+        search.searchBar.searchBarStyle = .default
+        search.searchBar.delegate = self
+        
+        return search
+    }()
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,9 +59,9 @@ class SearchViewController: UIViewController {
     
 }
 
+// MARK: - UITableViewDataSource
+
 extension SearchViewController: UITableViewDataSource {
-    
-    // MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         searchRecipes.count
@@ -68,9 +75,9 @@ extension SearchViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - UITableViewDelegate
+
 extension SearchViewController: UITableViewDelegate {
-    
-    // MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -83,9 +90,9 @@ extension SearchViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - UISearchBarDelegate
+
 extension SearchViewController: UISearchBarDelegate {
-    
-    // MARK: - UISearchBarDelegate
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText != "" {
@@ -113,18 +120,13 @@ extension SearchViewController: RecipeManagerDelegate {
         }
     }
     
-    func didUpdateDetailRecipe(recipe: DetailRecipe) {
-        
-    }
-    
-    func didCuisinesRecipe(recipes: [CuisineRecipe]) {
-        
-    }
-    
     func didUpdateSearchRecipes(recipes: [SearchRecipe]) {
         DispatchQueue.main.async { [weak self] in
             self?.searchRecipes = recipes
             self?.tableView.reloadData()
         }
     }
+    
+    func didUpdateDetailRecipe(recipe: DetailRecipe) { }
+    func didCuisinesRecipe(recipes: [CuisineRecipe]) { }
 }

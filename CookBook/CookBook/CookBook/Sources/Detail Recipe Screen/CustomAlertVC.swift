@@ -7,7 +7,14 @@
 
 import UIKit
 
-class CustomAlertVC: UIViewController {
+final class CustomAlertVC: UIViewController {
+    
+    //MARK: - UIElements
+    
+    private let messageLabel = UILabel()
+    private let actionButton = UIButton()
+    private let padding: CGFloat = 20
+    private var message: String?
     
     private let containerView: UIView = {
         let view = UIView()
@@ -19,11 +26,22 @@ class CustomAlertVC: UIViewController {
         return view
     }()
     
-    private let messageLabel = UILabel()
-    private let actionButton = UIButton()
-    private let padding: CGFloat = 20
+    func configureActionButton() {
+        
+        actionButton.backgroundColor = .mainWhite
+        actionButton.layer.cornerRadius = 10
+        actionButton.setTitle("Ok", for: .normal)
+        actionButton.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
+    }
     
-    private var message: String?
+    func configureMessageLabel() {
+        
+        messageLabel.translatesAutoresizingMaskIntoConstraints = false
+        messageLabel.text = message ?? ""
+        messageLabel.numberOfLines = 0
+    }
+    
+    // MARK: - Initialization
     
     init(message: String) {
         super.init(nibName: nil, bundle: nil)
@@ -34,59 +52,62 @@ class CustomAlertVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - LifeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black.withAlphaComponent(0.75)
-        configureContainerView()
+        setupConstraints()
         configureActionButton()
         configureMessageLabel()
     }
     
-    
-    private func configureContainerView() {
-        view.addSubview(containerView)
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-        ])
-    }
-    
-    func configureActionButton() {
-        containerView.addSubview(actionButton)
-        actionButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        actionButton.backgroundColor = .mainWhite
-        actionButton.layer.cornerRadius = 10
-        actionButton.setTitle("Ok", for: .normal)
-        actionButton.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
-        
-        NSLayoutConstraint.activate([
-            actionButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -padding),
-            actionButton.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            actionButton.heightAnchor.constraint(equalToConstant: 44),
-            actionButton.widthAnchor.constraint(equalToConstant: 200)
-        ])
-    }
-    
-    
-    func configureMessageLabel() {
-        containerView.addSubview(messageLabel)
-        messageLabel.translatesAutoresizingMaskIntoConstraints = false
-        messageLabel.text = message ?? ""
-        messageLabel.numberOfLines = 0
-        
-        NSLayoutConstraint.activate([
-            messageLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 8),
-            messageLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
-            messageLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
-            messageLabel.bottomAnchor.constraint(equalTo: actionButton.topAnchor, constant: -12)
-        ])
-    }
-    
+    // MARK: - Action
     
     @objc func dismissVC() {
         dismiss(animated: true)
     }
+}
+
+// MARK: - Constrains
+
+extension CustomAlertVC {
+
+    private func setupConstraints() {
+        view.addSubview(containerView)
+        containerView.addSubview(actionButton)
+        containerView.addSubview(messageLabel)
+        
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        actionButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .containerViewAnchor),
+            containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.containerViewAnchor),
+       
+            actionButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -padding),
+            actionButton.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            actionButton.heightAnchor.constraint(equalToConstant: .actionButtonHeightAnchor),
+            actionButton.widthAnchor.constraint(equalToConstant: .actionButtonWidthAnchor),
+        
+            messageLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: .messageLabelTopAnchor),
+            messageLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
+            messageLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
+            messageLabel.bottomAnchor.constraint(equalTo: actionButton.topAnchor, constant: .messageLabelBottomAnchor)
+        ])
+    }
+}
+
+// MARK: - Constant Constraints
+
+private extension CGFloat {
+    static let containerViewAnchor: CGFloat = 10
+    
+    static let actionButtonHeightAnchor: CGFloat = 44
+    static let actionButtonWidthAnchor: CGFloat = 200
+    
+    static let messageLabelTopAnchor: CGFloat = 8
+    static let messageLabelBottomAnchor: CGFloat = -12
+
 }

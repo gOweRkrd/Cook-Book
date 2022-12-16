@@ -1,13 +1,11 @@
 import UIKit
 
-class FavouriteViewController: UIViewController {
+final class FavouriteViewController: UIViewController {
     
     private let tableView = UITableView()
-    private lazy var emptyStateView = EmptyStateView()
-    
     private let identifier = "MyCell"
-    
     private let storageManager = StorageManager.shared
+    private lazy var emptyStateView = EmptyStateView()
     private var favoriteItems = [Recipe]()
     
     // MARK: - Lifecycle
@@ -35,6 +33,8 @@ class FavouriteViewController: UIViewController {
             removeEmptyStateView()
         }
     }
+  
+    // MARK: - Setup
     
     private func createTable() {
         view.addSubview(tableView)

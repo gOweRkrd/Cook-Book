@@ -59,6 +59,8 @@ final class FavoriteCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Private Method
+    
     private func setupCell() {
         contentView.addSubviews([
             imageRecipe,
@@ -70,17 +72,28 @@ final class FavoriteCell: UITableViewCell {
 //MARK: - Constrains
 
 private extension FavoriteCell {
+    
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            imageRecipe.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            imageRecipe.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
-            imageRecipe.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
+            imageRecipe.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .tenSizeAnchor),
+            imageRecipe.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .imageRecipeSizeAnchor),
+            imageRecipe.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.imageRecipeSizeAnchor),
             imageRecipe.widthAnchor.constraint(equalTo: imageRecipe.heightAnchor),
             
-            titleRecipe.leadingAnchor.constraint(equalTo: imageRecipe.trailingAnchor, constant: 12),
-            titleRecipe.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
-            titleRecipe.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            titleRecipe.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
+            titleRecipe.leadingAnchor.constraint(equalTo: imageRecipe.trailingAnchor, constant: .titleRecipeSizeAnchor),
+            titleRecipe.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.titleRecipeSizeAnchor),
+            titleRecipe.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .tenSizeAnchor),
+            titleRecipe.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.tenSizeAnchor)
         ])
     }
 }
+
+// MARK: - Constant Constraints
+
+private extension CGFloat {
+    static let tenSizeAnchor: CGFloat = 10
+    static let imageRecipeSizeAnchor: CGFloat = 5
+    static let titleRecipeSizeAnchor: CGFloat = 12
+    
+}
+

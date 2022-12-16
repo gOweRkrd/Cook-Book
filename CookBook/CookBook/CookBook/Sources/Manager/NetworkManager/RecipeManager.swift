@@ -83,7 +83,7 @@ struct RecipeManager {
                         
                     case .detailRecipe:
                         if let recipe = parseDetailJSON(safeData) {
-                            delegate?.didUpdateDetailRecipe(recipe: recipe)
+                        delegate?.didUpdateDetailRecipe(recipe: recipe)
                         }
                     case .searchRecipes:
                         let recipes = parseSearchJSON(safeData)

@@ -15,7 +15,7 @@ class CuisineButton: UIButton {
         self.text = text
         self.cuisine = cuisine
         super.init(frame: .zero)
-    
+        
         setupView()
     }
     

@@ -60,6 +60,8 @@ extension HeaderView {
     }
 }
 
+// MARK: - Constant Constraints
+
 private extension CGFloat {
     
     static let welcomeTitleTopAncor: CGFloat = 40
@@ -71,5 +73,5 @@ private extension CGFloat {
     static let sideButton: CGFloat = 20
     static let topAnchorButton: CGFloat = 70
     
-
+    
 }

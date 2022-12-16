@@ -11,21 +11,30 @@ final class DetailViewController: UIViewController {
     
     var id: Int?
     var isFavorite = false
-    
-    //    let h: CGFloat = view.heightAnchor / 2
-    
-    //MARK: - UIElements
-    
+        
     private var manager = RecipeManager()
     private let storageManager = StorageManager.shared
     private var ingredients = [Ingredient]()
     private let cellReuseIdentifier = "cell"
     private var detailRecipe: DetailRecipe?
     private var text: String?
+   
+    
+    //MARK: - UIElements
+    
+    private var  scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        return scrollView
+    }()
+    
+    private var contentView: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
     private lazy var image: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "")
-        //        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
@@ -62,9 +71,6 @@ final class DetailViewController: UIViewController {
         return favouritesButton
     }()
     
-    private let scrollView = UIScrollView()
-    private let contentView = UIView()
-    
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
@@ -97,7 +103,7 @@ final class DetailViewController: UIViewController {
         tabBarController?.tabBar.isHidden = false
     }
     
-    // MARK: - Setups
+    //MARK: - Setup
     
     private func setupView() {
         tableView.dataSource = self
@@ -106,42 +112,7 @@ final class DetailViewController: UIViewController {
         tableView.backgroundColor = .clear
     }
     
-    private func setupHierarchy() {
-        view.addSubviews([
-            image,
-            nameLabel,
-            descriptionLabel,
-            tableView,
-            favouriteButton
-        ])
-    }
-    
-    private func setupLayout() {
-        NSLayoutConstraint.activate([
-            image.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            image.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            image.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            image.heightAnchor.constraint(equalToConstant: 1.fitScreen),
-            
-            favouriteButton.topAnchor.constraint(equalTo: image.topAnchor, constant: 10),
-            favouriteButton.trailingAnchor.constraint(equalTo: image.trailingAnchor, constant: -15),
-            favouriteButton.widthAnchor.constraint(equalToConstant: 50),
-            favouriteButton.heightAnchor.constraint(equalToConstant: 50),
-            
-            nameLabel.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 5),
-            nameLabel.trailingAnchor.constraint(equalTo: image.trailingAnchor, constant: -20),
-            nameLabel.leadingAnchor.constraint(equalTo: image.leadingAnchor, constant: 20),
-            
-            tableView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 30),
-
-            descriptionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10),
-            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-        ])
-    }
+    //MARK: - Action
     
     @objc private func didTapFavoriteButton() {
         if isFavorite, let id {
@@ -166,6 +137,8 @@ final class DetailViewController: UIViewController {
         
     }
     
+    //MARK: - Private Method
+    
     private func changeFavorite() {
         if isFavorite {
             favouriteButton.setImage(UIImage(named: "star.png"), for: .normal)
@@ -175,9 +148,9 @@ final class DetailViewController: UIViewController {
     }
 }
 
+// MARK: - RecipeManagerDelegate
+
 extension DetailViewController: RecipeManagerDelegate {
-    
-    // MARK: - RecipeManagerDelegate
     
     func didFailWithError(error: String) {
         let alertVC = UIAlertController(title: error, message: nil, preferredStyle: .alert)
@@ -247,4 +220,64 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+//MARK: - Constrains
+
+extension DetailViewController {
+    
+    private func setupHierarchy() {
+        view.addSubviews([
+            image,
+            nameLabel,
+            descriptionLabel,
+            tableView,
+            favouriteButton
+        ])
+    }
+    
+    private func setupLayout() {
+        NSLayoutConstraint.activate([
+            image.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            image.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            image.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            image.heightAnchor.constraint(equalToConstant: 1.fitScreen),
+            
+            favouriteButton.topAnchor.constraint(equalTo: image.topAnchor, constant: .tenSizeAnchor),
+            favouriteButton.trailingAnchor.constraint(equalTo: image.trailingAnchor, constant: .favouriteButtonAnchorTrailingAnchor),
+            favouriteButton.widthAnchor.constraint(equalToConstant: .favouriteButtonSize),
+            favouriteButton.heightAnchor.constraint(equalToConstant: .favouriteButtonSize),
+            
+            nameLabel.topAnchor.constraint(equalTo: image.bottomAnchor, constant: .nameLabelTopAnchor),
+            nameLabel.trailingAnchor.constraint(equalTo: image.trailingAnchor, constant: -.twentySizeAnchor),
+            nameLabel.leadingAnchor.constraint(equalTo: image.leadingAnchor, constant: .twentySizeAnchor),
+            
+            tableView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: .twentySizeAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: .tableViewBottomAnchor),
+            
+            descriptionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: .tenSizeAnchor),
+            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .tenSizeAnchor),
+            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.tenSizeAnchor),
+        ])
+    }
+}
+// MARK: - Constant Constraints
+
+private extension CGFloat {
+    static let tenSizeAnchor: CGFloat = 10
+    static let twentySizeAnchor: CGFloat = 20
+    
+    static let favouriteButtonAnchorTrailingAnchor: CGFloat = -15
+    static let favouriteButtonSize: CGFloat = 50
+    static let nameLabelTopAnchor: CGFloat = 5
+    static let tableViewBottomAnchor: CGFloat = 30
+    
+    
+    
+   
+    
+
+   
+    
+}
 

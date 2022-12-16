@@ -11,7 +11,7 @@ protocol HeaderViewDelegate: AnyObject {
     func didTapCuisineButton(cuisine: Cuisine)
 }
 
-class HeaderView : UIView {
+final class HeaderView : UIView {
     
     weak var delegate: HeaderViewDelegate?
     
@@ -56,6 +56,7 @@ class HeaderView : UIView {
         return button
         
     }
+    
     // MARK: - Action
     
     @objc private func didTapButton(_ selector: CuisineButton) {
