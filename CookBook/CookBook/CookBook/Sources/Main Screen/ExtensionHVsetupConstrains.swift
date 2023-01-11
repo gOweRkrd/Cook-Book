@@ -55,7 +55,7 @@ extension HeaderView {
             koreanButton.heightAnchor.constraint(equalToConstant: .heightAnchorButton),
             koreanButton.widthAnchor.constraint(equalToConstant: .widthAnchorButton.fitWMore),
             koreanButton.topAnchor.constraint(equalTo: italianButton.topAnchor),
-            koreanButton.centerXAnchor.constraint(equalTo: japaneseButton.centerXAnchor),
+            koreanButton.centerXAnchor.constraint(equalTo: japaneseButton.centerXAnchor)
         ])
     }
 }

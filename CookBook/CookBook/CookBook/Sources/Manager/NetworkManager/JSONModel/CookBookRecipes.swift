@@ -19,5 +19,3 @@ struct CuisineRecipe: Decodable {
     var title: String
     var image: String?
 }
-
-

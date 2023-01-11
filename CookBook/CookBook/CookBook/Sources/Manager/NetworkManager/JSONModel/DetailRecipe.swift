@@ -13,4 +13,3 @@ struct Ingredient: Decodable {
     let amount: Double
     let unit: String?
 }
-

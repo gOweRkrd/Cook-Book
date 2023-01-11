@@ -4,24 +4,24 @@ protocol MyOwnCellDelegate: AnyObject {
     func didTapFavoriteButton(_ id: Int)
 }
 
-final class MyOwnCell: UITableViewCell  {
+final class MyOwnCell: UITableViewCell {
     
     weak var delegate: MyOwnCellDelegate?
     
     private var id: Int?
     private var isFavorite = false
     
-    //MARK: - UIElements
+    // MARK: - UIElements
     
-    lazy var imageRecipe : UIImageView = {
-        let imageRecipe = UIImageView ()
+    lazy var imageRecipe: UIImageView = {
+        let imageRecipe = UIImageView()
         imageRecipe.layer.masksToBounds = true
         imageRecipe.layer.cornerRadius = 20
         imageRecipe.contentMode = .scaleAspectFill
         return imageRecipe
     }()
     
-    lazy var titleRecipe : UILabel = {
+    lazy var titleRecipe: UILabel = {
         let titleRecipe = UILabel()
         titleRecipe.font = UIFont.systemFont(ofSize: 14)
         titleRecipe.font = UIFont.boldSystemFont(ofSize: 14)
@@ -31,13 +31,12 @@ final class MyOwnCell: UITableViewCell  {
         return titleRecipe
     }()
     
-    lazy var favouritesButton : UIButton = {
-        let favouritesButton = UIButton ()
+    lazy var favouritesButton: UIButton = {
+        let favouritesButton = UIButton()
         favouritesButton.setTitleColor(UIColor.black, for: .normal)
-        favouritesButton.addTarget(self, action: #selector(favouritesTapButton(_:)), for:.touchUpInside)
+        favouritesButton.addTarget(self, action: #selector(favouritesTapButton(_:)), for: .touchUpInside)
         return favouritesButton
     }()
-    
     
     // MARK: - Initialization
     
@@ -53,7 +52,6 @@ final class MyOwnCell: UITableViewCell  {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     // MARK: - Public Methods
     
     func configureCell(isFavorite: Bool, id: Int) {
@@ -61,7 +59,6 @@ final class MyOwnCell: UITableViewCell  {
         self.id = id
         changeFavorite()
     }
-    
     
     // MARK: - Action
     
@@ -74,11 +71,10 @@ final class MyOwnCell: UITableViewCell  {
         }
     }
     
-    
     // MARK: - Private Methods
     
     private func castomizeCell () {
-        contentView.backgroundColor = UIColor(red: 240/255, green: 235/255, blue: 231/255, alpha: 1)
+        contentView.backgroundColor = UIColor(red: 240 / 255, green: 235 / 255, blue: 231 / 255, alpha: 1)
         contentView.layer.borderColor = UIColor.gray.cgColor
     }
     
@@ -90,4 +86,3 @@ final class MyOwnCell: UITableViewCell  {
         }
     }
 }
-

@@ -13,7 +13,7 @@ final class DetailViewController: UIViewController {
     private var detailRecipe: DetailRecipe?
     private var text: String?
     
-    //MARK: - UIElements
+    // MARK: - UIElements
     
     private var  scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -57,10 +57,10 @@ final class DetailViewController: UIViewController {
         return label
     }()
     
-    private lazy var favouriteButton : UIButton = {
-        let favouritesButton = UIButton ()
+    private lazy var favouriteButton: UIButton = {
+        let favouritesButton = UIButton()
         favouritesButton.setTitleColor(UIColor.black, for: .normal)
-        favouritesButton.addTarget(self, action: #selector(didTapFavoriteButton), for:.touchUpInside)
+        favouritesButton.addTarget(self, action: #selector(didTapFavoriteButton), for: .touchUpInside)
         return favouritesButton
     }()
     
@@ -133,7 +133,7 @@ final class DetailViewController: UIViewController {
         
     }
     
-    //MARK: - Private Method
+    // MARK: - Private Method
     
     private func changeFavorite() {
         if isFavorite {
@@ -217,7 +217,6 @@ extension DetailViewController: UITableViewDelegate {
     }
 }
 
-
 // MARK: - Constrains
 
 extension DetailViewController {
@@ -255,7 +254,7 @@ extension DetailViewController {
             
             descriptionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: .tenSizeAnchor),
             descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .tenSizeAnchor),
-            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.tenSizeAnchor),
+            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.tenSizeAnchor)
         ])
     }
 }
@@ -270,4 +269,3 @@ private extension CGFloat {
     static let nameLabelTopAnchor: CGFloat = 5
     static let tableViewBottomAnchor: CGFloat = 30
 }
-

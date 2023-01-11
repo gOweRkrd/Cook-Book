@@ -4,9 +4,9 @@ final class FavoriteCell: UITableViewCell {
     
     private let manager = RecipeManager()
     
-    //MARK: - UIElements
+    // MARK: - UIElements
     
-    private lazy var imageRecipe : UIImageView = {
+    private lazy var imageRecipe: UIImageView = {
         let imageRecipe = UIImageView()
         imageRecipe.contentMode = .scaleAspectFill
         imageRecipe.layer.masksToBounds = true
@@ -14,7 +14,7 @@ final class FavoriteCell: UITableViewCell {
         return imageRecipe
     }()
     
-    private lazy var titleRecipe : UILabel = {
+    private lazy var titleRecipe: UILabel = {
         let titleRecipe = UILabel()
         titleRecipe.font = UIFont.systemFont(ofSize: 14)
         titleRecipe.font = UIFont.boldSystemFont(ofSize: 14)
@@ -62,7 +62,7 @@ final class FavoriteCell: UITableViewCell {
     }
 }
 
-//MARK: - Constrains
+// MARK: - Constrains
 
 private extension FavoriteCell {
     
@@ -87,6 +87,4 @@ private extension CGFloat {
     static let tenSizeAnchor: CGFloat = 10
     static let imageRecipeSizeAnchor: CGFloat = 5
     static let titleRecipeSizeAnchor: CGFloat = 12
-    
 }
-

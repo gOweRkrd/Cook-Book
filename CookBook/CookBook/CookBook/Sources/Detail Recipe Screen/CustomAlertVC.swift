@@ -2,7 +2,7 @@ import UIKit
 
 final class CustomAlertVC: UIViewController {
     
-    //MARK: - UIElements
+    // MARK: - UIElements
     
     private let messageLabel = UILabel()
     private let actionButton = UIButton()

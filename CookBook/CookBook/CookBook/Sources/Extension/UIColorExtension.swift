@@ -13,6 +13,6 @@ extension UIColor {
     }
     
     static var backgroundColor: UIColor {
-        UIColor(red: 240/255, green: 235/255, blue: 231/255, alpha: 1)
+        UIColor(red: 240 / 255, green: 235 / 255, blue: 231 / 255, alpha: 1)
     }
 }

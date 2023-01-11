@@ -1,6 +1,6 @@
 import UIKit
 
-final class KitchenViewController: UIViewController  {
+final class KitchenViewController: UIViewController {
     
     let headerView = HeaderView()
     let myTableView = UITableView()

@@ -4,8 +4,9 @@
 //
 //  Created by Дария Григорьева on 10.12.2022.
 //
-import Foundation
+
 import CoreData
+import Foundation
 
 class StorageManager {
     
@@ -21,7 +22,7 @@ class StorageManager {
     
     private let persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "RecipeCoreData")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }

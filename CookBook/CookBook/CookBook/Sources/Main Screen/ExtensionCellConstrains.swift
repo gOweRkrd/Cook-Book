@@ -19,12 +19,12 @@ extension MyOwnCell {
         
         NSLayoutConstraint.activate([
             imageRecipe.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .imageRecipeTopAnchor),
-            imageRecipe.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: .imageRecipeLeadingAnchor),
-            imageRecipe.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: .imageRecipeTrailingAnchor),
+            imageRecipe.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .imageRecipeLeadingAnchor),
+            imageRecipe.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: .imageRecipeTrailingAnchor),
             imageRecipe.heightAnchor.constraint(equalTo: contentView.heightAnchor, constant: .imageRecipeHeightAnchor),
             
             titleRecipe.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            titleRecipe.centerXAnchor.constraint(equalTo: imageRecipe.centerXAnchor,constant: .titleRecipeCenterXAnchor),
+            titleRecipe.centerXAnchor.constraint(equalTo: imageRecipe.centerXAnchor, constant: .titleRecipeCenterXAnchor),
             
             favouritesButton.heightAnchor.constraint(equalToConstant: .favouritesButtonHeightTopAnchor),
             favouritesButton.widthAnchor.constraint(equalToConstant: .favouritesButtonWidthTopAnchor),
@@ -50,5 +50,4 @@ private extension CGFloat {
     static let favouritesButtonLabelTopAnchor: CGFloat = 16
     static let favouritesButtonLabelTrailingAnchor: CGFloat = -130
    
-    
 }

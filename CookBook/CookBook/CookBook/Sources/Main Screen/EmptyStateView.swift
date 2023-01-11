@@ -2,7 +2,7 @@ import UIKit
 
 final class EmptyStateView: UIView {
     
-    //MARK: - UIElements
+    // MARK: - UIElements
     
     private lazy var messageLabel: UILabel = {
         let label = UILabel()
@@ -33,7 +33,7 @@ final class EmptyStateView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Constrains
+    // MARK: - Constrains
     
     private func setupView() {
         addSubviews([messageLabel, imageView])
@@ -58,5 +58,3 @@ private extension CGFloat {
     static let imageViewSizeAnchor: CGFloat = 200
     
 }
-
-

@@ -15,7 +15,7 @@ extension KitchenViewController {
             headerView.heightAnchor.constraint(equalToConstant: .headerViewHeightAnchor),
             
             myTableView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
-            myTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant:.myTableViewTrailingAnchor),
+            myTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: .myTableViewTrailingAnchor),
             myTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             myTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
@@ -26,7 +26,7 @@ extension KitchenViewController {
 
 private extension CGFloat {
     
-    static let myTableViewTrailingAnchor : CGFloat = 100
-    static let headerViewHeightAnchor : CGFloat = 250
+    static let myTableViewTrailingAnchor: CGFloat = 100
+    static let headerViewHeightAnchor: CGFloat = 250
     
 }

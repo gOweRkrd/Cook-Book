@@ -4,13 +4,13 @@ protocol HeaderViewDelegate: AnyObject {
     func didTapCuisineButton(cuisine: Cuisine)
 }
 
-final class HeaderView : UIView {
+final class HeaderView: UIView {
     
     weak var delegate: HeaderViewDelegate?
     
-    //MARK: - UI Elements
+    // MARK: - UI Elements
     
-    lazy var welcomeTitle : UILabel = {
+    lazy var welcomeTitle: UILabel = {
         let welcomeTitle = UILabel()
         welcomeTitle.text = "Choose cuisine:"
         welcomeTitle.font = UIFont.systemFont(ofSize: 30)
@@ -44,11 +44,10 @@ final class HeaderView : UIView {
         createButton(cuisine: .mexican)
     }()
   
-    
     // MARK: - Initialization
     
     override init(frame: CGRect) {
-        super.init(frame:frame)
+        super.init(frame: frame)
         
         configureView()
         americanButton.backgroundColor = .mainWhite
@@ -82,4 +81,3 @@ final class HeaderView : UIView {
         selector.backgroundColor = .mainWhite
     }
 }
-

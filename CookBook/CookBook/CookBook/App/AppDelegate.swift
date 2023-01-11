@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  CookBook
-//
-//  Created by Дария Григорьева on 27.11.2022.
-//
-
 import UIKit
 
 @main
@@ -27,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func setRootViewController() {
         let viewController = FirstScreenViewController()
-        let navController = UINavigationController (rootViewController: viewController)
+        let navController = UINavigationController(rootViewController: viewController)
         
         window?.rootViewController = navController
     }

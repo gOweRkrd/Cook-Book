@@ -33,7 +33,6 @@ struct RecipeManager {
     private let cuisinesURL = "https://api.spoonacular.com/recipes/complexSearch?cuisine=%@&apiKey="
     private let searchURL = "https://api.spoonacular.com/recipes/autocomplete?&query=%@&apiKey="
     
-    
     // MARK: - Public Method
 
     func fetchDetailRecipe(id: String?) {
@@ -85,7 +84,6 @@ struct RecipeManager {
         
         task.resume()
     }
-    
     
     // MARK: - Private Method
     
